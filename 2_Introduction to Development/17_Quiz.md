@@ -1,10 +1,8 @@
-
 ### 1.
 
 Question 1
 
 Liam wants to add clickable buttons for pop-up messages on the website. Which technology should Liam use in this scenario?
-
 
 [ ] Hypertext Markup Language (HTML)
 
@@ -26,7 +24,6 @@ Question 2
 
 As a front-end developer, you are creating an online shopping website that is both visually appealing and interactive. Which combination of technologies would you primarily use to achieve this?
 
-
 [X] HTML, CSS, and JavaScript
 
 [ ] HTML, Python, and SQL
@@ -46,7 +43,6 @@ HTML, CSS, and JavaScript are the core technologies used for creating the struct
 Question 3
 
 What is the primary function of back-end development in a web application that must manage dynamic content and ensure secure user interactions?
-
 
 [ ] Optimizing the application for various devices
 
@@ -68,7 +64,6 @@ Question 4
 
 While browsing an e-commerce website, Alan added a product to his cart and proceeded to payment by entering credit card details, and selected Pay. He wants to ensure that his payment is secure. Which of the following developers ensures that the sensitive customer information is securely stored and processed?
 
-
 [X] Back-end developer
 
 [ ] Website designer
@@ -88,7 +83,6 @@ The back-end developer is responsible for customers’ sensitive information.
 Question 5
 
 Carl is writing a failing test, and then Leo implements code to make it pass in a test-driven development environment. For the next feature, Carl and Leo switched their responsibilities. Which pair programming style best suits this scenario?
-
 
 [X] Ping-pong style
 
@@ -110,7 +104,6 @@ Question 6
 
 A web developer needs a tool to build interactive user interfaces. Which of these would be the most appropriate choice?
 
-
 [ ] Ruby
 
 [ ] Git
@@ -131,7 +124,6 @@ Question 7
 
 While working with the cloud app, your team needs to manage changes in the source code to avoid overwriting each other’s work. Which tool will you use primarily to manage and track code changes during development?
 
-
 [ ] Libraries
 
 [X] Version control system
@@ -151,7 +143,6 @@ A version control system tracks code changes, manages multiple developers’ wor
 Question 8
 
 A development team is using a tool that automates code integration and testing, ensuring that all code components work together smoothly. What process are they implementing to automatically build and test your code?
-
 
 [ ]
 
@@ -175,7 +166,6 @@ Question 9
 
 A software engineer is using a version control system to manage changes to code over time. Which additional tool can enhance the efficiency of this process by automating tasks such as downloading dependencies and running tests?
 
-
 [ ] Package manager
 
 [ ] Debugger
@@ -196,7 +186,6 @@ Question 10
 
 A student is learning about different technology combinations used for web development. Which of these represents a complete software stack?
 
-
 [X] MEAN stack
 
 [ ] LAMP stack
@@ -209,14 +198,11 @@ Incorrect
 
 Please review the video "Introduction to Software Stacks."
 
-
-
 ### 1.
 
 Question 1
 
 Emma is a fresher in the web application field. She wants to understand technology, she should use it to style content and add interactive features to the applications. Which of the following statements best describes the technology for Emma in this scenario?
-
 
 [ ]
 
@@ -246,7 +232,6 @@ Question 2
 
 As a front-end developer, you are creating an online shopping website that is both visually appealing and interactive. Which combination of technologies would you primarily use to achieve this?
 
-
 [ ]
 
 HTML, Python, and SQL
@@ -274,7 +259,6 @@ HTML, CSS, and JavaScript are the core technologies used for creating the struct
 Question 3
 
 In web development, how does the back-end contribute to handling dynamic content and secure transactions?
-
 
 [ ]
 
@@ -304,7 +288,6 @@ Question 4
 
 While browsing an e-commerce website, Alan added a product to his cart and proceeded to payment by entering credit card details, and selected Pay. He wants to ensure that his payment is secure. Which of the following developers ensures that the sensitive customer information is securely stored and processed?
 
-
 [X]
 
 Back-end developer
@@ -332,7 +315,6 @@ The back-end developer is responsible for customers’ sensitive information.
 Question 5
 
 Lama and Jacky are working together on the application, where one writes code and the other reviews and provides direction. They regularly switch their roles. Which pair programming style best suits this scenario?
-
 
 [ ]
 
@@ -362,7 +344,6 @@ Question 6
 
 Which technology is categorized as a structured system that provides developers with tools for building web applications?
 
-
 [ ]
 
 Git
@@ -390,7 +371,6 @@ Vue.js is a JavaScript framework that provides a structured system for user inte
 Question 7
 
 Ricky is adding a user-friendly carousel feature while developing a cloud app, but he doesn’t want to build it from scratch. Which tool will Ricky use in this scenario?
-
 
 [X]
 
@@ -420,22 +400,13 @@ Question 8
 
 While testing a new feature in the application, Sofia observed an unexpected behavior in it. She leveraged a tool to step through the code and found the source of the error. What process has she performed to identify the error?
 
+[ ] Version control
 
-[ ]
+[X] Debugging
 
-Version control
+[ ] Continuous integration
 
-[X]
-
-Debugging
-
-[ ]
-
-Continuous integration
-
-[ ]
-
-Code refactoring
+[ ] Code refactoring
 
 Correct
 
@@ -449,22 +420,13 @@ Question 9
 
 Seeni is managing third-party libraries and ensuring your application always uses the correct versions of dependencies. Which tool would should she use in this scenario?
 
+[ ] Build tool
 
-[ ]
+[ ] Continuous integration tool
 
-Build tool
+[ ] Debugger
 
-[ ]
-
-Continuous integration tool
-
-[ ]
-
-Debugger
-
-[X]
-
-Package manager
+[X] Package manager
 
 Correct
 
@@ -478,22 +440,13 @@ Question 10
 
 A student is learning about different technology combinations used for web development. Which of these represents a complete software stack?
 
+[ ] Ruby on Rails stack
 
-[ ]
+[ ] Python-Django stack
 
-Ruby on Rails stack
+[ ] LAMP stack
 
-[ ]
-
-Python-Django stack
-
-[ ]
-
-LAMP stack
-
-[X]
-
-MEAN stack
+[X] MEAN stack
 
 Incorrect
 
