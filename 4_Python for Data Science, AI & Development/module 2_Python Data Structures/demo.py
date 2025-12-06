@@ -1,0 +1,1 @@
+tuple=("disco",10,2.5,True)
