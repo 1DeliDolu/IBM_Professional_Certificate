@@ -1,0 +1,20 @@
+# 📌 İzlemenin Önemi
+
+İzlemenin Önemine hoş geldiniz! Bu videoyu izledikten sonra şunları yapabileceksiniz: Uygulama izlemenin gerekliliğini açıklamak ve Uygulama izlemenin önemli unsurlarını tanımlamak. Uygulama izleme artık günlük operasyonların vazgeçilmez bir parçası hâline gelmiştir. İzleme düzenli olarak gerçekleştirilmelidir. Uygulama ve servislerin performansını ve verimliliğini **gerçek zamanlı** ölçmeyi sağlar. Ayrıca izleme, uygulama geliştiricilerinin sistemlerini optimize etmelerine yardımcı olur ve karar vericiler etkili iş kararları almak için bu verilere güvenir. Günümüz kurumsal dünyası uygulamalara dayanır; bu nedenle *uygulama performansı izleme* (ya da  *APM* ) onların başarısı için kritiktir.
+
+Ve izleme sürecinin verimliliğini artırmak için çeşitli uygulama izleme araçları mevcuttur. Modern bilişimde uygulamalara akıllı telefonlar, tabletler ve masaüstü bilgisayarlar gibi farklı platformlardan erişilir. Bu platformlar farklı işletim sistemleri, yazılım ve donanım platformları, bulut servisleri ve güvenlik kurulumlarından oluşur. Sürekli uygulama performansı izlemesi, sorunsuz operasyonlar için temel bir parçadır. Bu, büyük ölçüde bir uygulamanın içinde neler olduğunun, bağımlılıklarının ve bu farklı platformlarda ve farklı platform mimarileriyle nasıl performans gösterdiklerinin **gerçek zamanlı izlenmesi** ile sağlanabilir.
+
+Yazılım geliştirme sürecinin karmaşıklığı nedeniyle performansı sağlamak için çok sayıda test gereklidir. Ayrıca bunu sürekli izlemek ve uygulama geliştiricileri ile yöneticilere bellek gereksinimleri, *merkezi işlem birimi* (ya da  *CPU* ) kullanımı, bant genişliği kullanımı, veri aktarım hacmi ( *data throughput* ) ve daha fazlasına ilişkin veriler sağlamak için birçok araç da mevcuttur.
+
+Bu verileri kullanarak yöneticiler, uygulamaların geliştirme süreçlerindeki problemleri belirleyebilir ve çözebilir. İzleme servisleri yalnızca olayları ( *incident* ) önlemekle kalmaz, aynı zamanda gerçekleştiğinde onları daha hızlı tespit etmeye yardımcı olur. Bir olayı hızlı tespit ederseniz veya hatta önlerseniz, şirketin bütçesinden ve kişisel bütçenizden zaman ve para tasarrufu sağlayabilirsiniz.
+
+İyi bir izleme sistemi, problemler ortaya çıktıkça sizi uyarır ve sorunu hemen çözmenize olanak tanır. Bu, servisinizin kapalı kalma ya da yavaş çalışma süresini en aza indirmenize yardımcı olur. İzleme ayrıca donanımınızın kullanımını iyileştirir. Sistem operasyonlarınızı yönettiğinizde ve kontrol ettiğinizde, donanım kaynaklarınızı daha etkili kullanabilirsiniz. Örneğin, bir izleme aracı bir bilgisayarın veya servisin düzgün çalışmadığını tespit eder ve sizi bilgilendirir.
+
+Bilgilendirildikten sonra problemi onarabilir veya arızalı donanımı değiştirebilirsiniz. İş sürekliliği ve uygulama performansı birbirine bağlıdır ve başarı için kritiktir. Performanstaki herhangi bir kesinti işletmelere para kaybettirebilir; bu nedenle kuruluşlar uygulamalara ilişkin raporlar toplamak için uygun uygulama izleme araçlarını ve süreçlerini kullanmalıdır. Bu tür değerli verilerin toplanması, operasyonlara ilişkin istatistiklerin bulunmasına ve performans metrikleri sunan gerçek zamanlı analizlere yardımcı olabilir.
+
+## 🧾 Bu videoda şunları öğrendiniz
+
+* Uygulama izleme günlük operasyonlar için zorunludur ve düzenli olarak gerçekleştirilmelidir.
+* *APM* araçlarıyla izleme, performans ve verimliliğin **gerçek zamanlı** ölçümünü sağlar.
+* İzlemenin önemli unsurları; cihazlar ve işletim sistemleri gibi platform çeşitliliği, tekrarlanan uygulama testleri gibi karmaşık geliştirme süreçleri ve iş sürekliliğini içerir.
+* Olayların ( *incident* ) önlenmesi, problemlerin erken tespit edilmesini sağlar; bu da işletmelerin para tasarrufu yapmasına yardımcı olur ve operasyonları destekler.
