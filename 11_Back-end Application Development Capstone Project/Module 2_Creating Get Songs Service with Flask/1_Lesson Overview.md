@@ -1,0 +1,5 @@
+# 📘 Ders Özeti
+
+Modül 2’de, *NoSQL* terimi ve onun temel özellikleriyle tanıştırılacaksınız. Ardından NoSQL veritabanlarının dört kategorisini tartışacaksınız:  *Key-Value* ,  *Document* , *Column* ve  *Graph* . *Key-Value* veritabanlarında tüm veriler, bir anahtar ( *key* ) ve ona bağlı bir değer bloğu ( *value blob* ) ile saklanır. Sonrasında, *Document* veritabanlarının *Key-Value* modelinin üzerine inşa edildiğini öğreneceksiniz; burada her bir veri parçası bir *document* olarak kabul edilir ve genellikle **JSON** formatında saklanır.
+
+Bir sonraki adımda, bir NoSQL veritabanı olan *MongoDB* hakkında bilgi edineceksiniz. MongoDB’nin ana bileşenlerini tanımlayabilecek ve veritabanının nasıl kullanılacağını açıklayabileceksiniz. Buna ek olarak, uygulamalı bir lab yapacak ve lab ortamında sağlanan MongoDB sunucusuna erişeceksiniz. Ardından uygulamalı bir deneyim yaşayacak ve *mongo shell* kullanarak MongoDB veritabanınıza bağlanıp temel **CRUD** işlemlerini gerçekleştireceksiniz.
