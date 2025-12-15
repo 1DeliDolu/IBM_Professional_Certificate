@@ -1,0 +1,19 @@
+## 📘 Modül 4 Sözlüğü: Ortaya Çıkan Trendler ve Uygulamalar
+
+| Terim                      | Tanım                                                                                                                                                                                       |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| API                        | Uygulama Programlama Arayüzü                                                                                                                                                               |
+| Application modernization  | Kuruluşların dijital dönüşümlerini hızlandırmasına, yeni teknolojiler ve hizmetlerden yararlanmasına ve değişen pazar dinamiklerine daha duyarlı hale gelmesine yardımcı olur |
+| Cloud native application   | Baştan itibaren yalnızca bulut ortamında çalışmak üzere geliştirilen veya cloud native ilkeleriyle yeniden düzenlenip yeniden yapılandırılan mevcut bir uygulama                 |
+| Continuous delivery        | Müşterilere küçük, iyi tasarlanmış, yüksek kaliteli yazılım artışlarının teslim edilmesi                                                                                       |
+| Continuous deployment      | Her yeni paketlenmiş derlemenin dağıtım yaşam döngüsü boyunca mümkün olduğunca hızlı ilerletilmesi                                                                              |
+| Continuous integration     | Yayınlanan kod değişikliklerinin değiştirilemez imajlar olarak paketlenmiş derlemelerinin oluşturulması                                                                              |
+| Continuous monitoring      | Uygulamalar üretim ortamına dağıtılmadan önce bile performansını ve kullanılabilirliğini anlamaya yardımcı olan araçlarla izleme                                                |
+| Delivery pipeline          | Fikir Üretimi, Kodlama, Derleme, Dağıtma, Yönetme ve Sürekli İyileştirme aşamalarını içeren otomatik bir adım dizisi                                                             |
+| DevOps                     | İş sahipleri ile geliştirme, operasyon ve kalite güvence ekiplerinin yazılımı sürekli teslim etmek için iş birliği yaptığı yaklaşım                                          |
+| Hybrid multicloud          | Herhangi bir genel bulut altyapısına dağıtılabilen, açık standartlara dayalı bir yığın                                                                                            |
+| Microservices              | Büyük uygulamaların temel işlevlerine ayrıştırılması                                                                                                                                |
+| Microservices architecture | Tek bir uygulamanın, gevşek bağlı ve bağımsız olarak dağıtılabilir birçok küçük bileşen veya servisten oluştuğu yaklaşım                                                  |
+| Monolithic architecture    | Tek bir uygulamanın tek parça bir yazılımdan oluşturulduğu yaklaşım                                                                                                                  |
+| Serverless                 | Yaygın altyapı yönetimi görevleri için sorumluluğu bulut sağlayıcılarına devreden bilişim yaklaşımı                                                                            |
+| Service discovery          | Mikroservislerin iletişim kurması için bir yol haritası oluşturur                                                                                                                       |
