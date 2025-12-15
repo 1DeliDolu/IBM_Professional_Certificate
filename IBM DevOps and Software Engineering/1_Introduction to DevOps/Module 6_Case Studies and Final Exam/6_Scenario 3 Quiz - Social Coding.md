@@ -1,0 +1,54 @@
+### 1.
+
+Question 1
+
+Who contributed the most to the project in terms of social coding?
+
+[ ]Susan for being honest about the timeline
+
+[ ]Jeff because he pushed the project to completion
+
+[X]Kiet because he helped another team and shared his experience
+
+[ ]The Innovation Group for rewarding behavior that produces good products
+
+
+Correct. Social coding happens communally and everyone is encouraged to share and contribute.
+
+1 / 1 point
+
+### 2.
+
+Question 2
+
+What could the product team have done differently to align with social coding principles?
+
+[ ]Build the feature sooner without the account team and take the credit for it themselves.
+
+[ ]Make a copy of their code and give it to the account team to use and maintain separately.
+
+[ ]Prevent Kiet from working with the account team.
+
+[X]Use a public repository for their projects and allow the account team to contribute to it.
+
+
+Correct. With social coding, repositories are public and everyone is encouraged to fork the code and contribute.
+
+1 / 1 point
+
+### 3.
+
+Question 3
+
+What could the company have done differently to align with social coding principles?
+
+[ ]Reprimand Kiet for working on something that should have waited in the queue like all the other projects.
+
+[ ]Reprimand the product team for taking so long to work on the feature.
+
+[X]Reward the product team when they allow others to reuse their code and when they share information.
+
+[ ]Reward the product team for keeping their code secure and private.
+
+
+Correct. Having the account team rebuild 80% of the code to get 20% is a waste of resources for the company.
