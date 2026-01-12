@@ -1,0 +1,30 @@
+
+# 🧠 İçeriden Bakış: Design ve Software Architecture'ın Önemi
+
+## 🎬 Giriş: Design ve Software Architecture'ın Rolü
+
+Insiders' Viewpoints: The Importance of Design and Software Architecture'a hoş geldiniz. Bu videoda, bir software engineering project içinde design ve software architecture'ın önemini tartışan uzmanları dinleyeceğiz. Design ve architecture kritik öneme sahiptir. Eğer nereye gittiğini bilmiyorsan, şu anda ne yapman gerektiğini nasıl bilebilirsin? Her zaman ne yapman gerektiğini, programının neyi handle etmeye hazırlanmış olması gerektiğini ve çalıştığı system'i bilmen gerekir. Eğer aynı server üzerinde birlikte co-hosted edilen bir seri, bir grup application çalıştırıyorsan, bu servislerin birbirleriyle nasıl etkileşebileceğine dair, başka durumlarda geçerli olmayan bazı varsayımlar yapabilirsin. Ben bazen architecture'ı orkestrasyon olarak da düşünürüm.
+
+## 🎻 Mimariyi Orkestra ve Sürdürülebilirlik Gibi Düşünmek
+
+Yani şöyle, gerçekten çok güzel, çok hoş ses çıkaran bir enstrümana sahip olabilirsin. Ama eğer orkestranın geri kalanıyla senkron değilse, sonunda tamamen kakofonik bir karmaşa gibi duyulacaktır. Bu yüzden gerçekten bigger picture hakkında düşünmen gerekir. Sustainability, yani sürdürülebilirlik; ne inşa ettiğinin, daha geniş ekosistem içinde gerçekten anlamlı olup olmadığı. Ve her seferinde, kodunu yazmak için zaman harcıyorsan ve sonra neden çalışmadığını çözüp duruyorsan, o kodu yazmaya çok fazla zaman harcamışsındır; belki bir şeyler öğrenmişsindir, bu tamamen boşa gitmiş değildir. Ama ilerlemek için harcanabilecek çok zaman harcamışsındır. Ve bu yüzden, bir project üzerinde bu şeyleri en baştan düşünebilirsen.
+
+## 🌍 Ölçeklenebilirlik, Global Erişilebilirlik ve Veri İhtiyaçları
+
+Ve sonra kodunu yazdığında, yazdığın kodun gerçekten kalıcı olacağından ve kullanılacağından makul ölçüde eminsen, genel olarak bulunmak için daha iyi bir yerde olursun. Yani architecture çok önemlidir. Mesela, onun scale'i, global availability'si hakkında çok fazla konuşma vardır; çoğu zaman inşa ettiğin bir şey, çok hyper local bir environment'ta çok iyi çalışır, ama tüm dünyada kullanılmasının beklendiği durumda iyi çalışmaz ya da, bilirsin, bir user için çok iyi çalışır ama bir milyon user için iyi çalışmaz. Bir service inşa ediyorum, yazmak istediğim function'a gelmesi gereken XYZ adet data parçasına ihtiyacım var. Bunlar nereden geliyor? Nasıl içeri pass ediliyorlar? Onlara sahip olduktan sonra onlarla ne yapmam gerekiyor? Bu data'ya başka ne erişmek zorunda?
+
+## 🧩 Dağıtık Sunucular, Network Hop ve microservice Architecture
+
+Ve bu data'yı o diğer parçalara nasıl götüreceğim? Bu soruların cevabını bilmiyorsan, sonunda çok fazla churny code yazarsın. Eğer her şey, cloud'da bir yerde ayrı bir server üzerinde ya da sadece data center'ının içinde farklı yerlerde bulunan ayrı physical server'lar üzerinde ise, o zaman onların üzerinden geçmek için bir network hop maliyetine katlanmak zorundasın. Ve bu zaman alır, page'in timeout olmaya başlayabilir ve müşterilerin, işlerin ne kadar uzun sürdüğüne dair sana gerçekten kızabilir. Ve dolayısıyla, eğer microservice architecture gibi bir yapıda bir şey inşa ediyorsan, data'nı load etme şeklin, her şeyin aynı server üzerinde birlikte hosted olduğu duruma kıyasla çok daha önemli hâle gelir. Ama belki de şu soru ortaya çıkar: Service'imi kim kullanıyor? Senin kim olduğunu nasıl bilebilirim?
+
+## 🧑‍💻 Kimlik Doğrulama, Account Management ve Servisler Arası İletişim
+
+Bu, servers'larının, services'lerinin nerede çalıştığına ve insanları tanımlamak için sana hangi mekanizmaların sunulduğuna bağlı olarak ilginç bir soru hâline gelebilir. Eğer people'ını, eğer müşterilerinin bir website'a login olmasını istiyorsan, account management'ı nasıl yapıyorsun? O kişinin kim olduğunu ve ne yapmaya yetkili olduğunu nasıl biliyorsun? Ya da tekrar, birbirleriyle konuşan multiple services'in varsa, o service'in ne olduğunu nasıl biliyorsun? Ne yapmaya yetkili olduğunu? Birinden diğerine çağrıyı nasıl yapıyorsun? Stack'inin farklı parçaları arasında data'yı nasıl transmit ediyorsun?
+
+## 🧱 Mimari Kararların Ne, Nerede ve Kapsam Boyutu
+
+Yani architecture çok önemlidir. Her zaman süper iyi tanımlanmış, süper sıkı bir şekilde tanımlanmış olmak zorunda değildir, ama hangi şeylere, neye ihtiyacın olduğu, kabaca nerede yaşayacakları hakkında bir fikre sahip olman gerekir. Ve hangi şeylerin, neyin sorumluluğunda oldukları hakkında. Muhtemelen sorulacak üç büyük soru bunlar olurdu: What, where ve bunların scope'u? Dolayısıyla bu tür concepts, bilirsin, bu şeyler hakkında düşünmek zorundasın. Bir system'i design ederken veya architect ederken, architecture ve design hakkında düşünürken, 5, 10 yıl sonrasını düşünüyorsundur; sadece bir şeyi hızlıca build edip ayağa kaldırmayı düşünmüyorsun, gerçekten önceden plan yapmak istiyorsun. Bu yüzden, bence architecture ve design'ın büyük bir kısmı, bilirsin, kaç adım, kaç yıl, her neyse, gelecekte, bunun o zaman nasıl görüneceğini düşünmektir.
+
+## 🏗️ Sürdürülebilir System Architecture ve Uzun Ömürlü Tasarım
+
+Sistemi büyütmeye ve evrimleştirmeye devam etmek için ne yapman gerekiyor? Çünkü bilirsin, o kadar sık gigantic architecture changes yapmak istemezsin, bilirsin, you don't really use; binalar onarıldığında, hani, küçük küçük parçalar onarılır. Ve sonra bir noktada, şeyin tamamını yıkıp yeniden inşa edersin. Ve bence bu, sustainable system architecture'a uygulanan benzer bir modeldir; her birkaç yılda bir yeniden re-architect ve redesign etmek istemezsin, mümkün olduğunca uzun süre dayanmasını istersin.
