@@ -1,0 +1,34 @@
+version: "3.8"
+
+services:
+  user-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5001:5000"  # avoid host port 5000 conflicts
+    environment:
+      MONGO_URI: mongodb://deli:D0cker@mongo:27017/codecrafthub_users?authSource=admin
+      PORT: 5000
+      JWT_SECRET: change_this_in_production
+      JWT_EXPIRES_IN: 1h
+      ROLE_ADMIN: "admin"
+      ROLE_USER: "user"
+      DEFAULT_USER_USERNAME: "deli"
+      DEFAULT_USER_PASSWORD: "D0cker"
+      DEFAULT_USER_ROLE: "admin"
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: deli
+      MONGO_INITDB_ROOT_PASSWORD: D0cker
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
