@@ -1,384 +1,294 @@
-<<<<<<< HEAD
+# Account Service
 
-# devops-capstone-project
-
-Customer Accounts RESTful microservice for DevOps Capstone: simple API to manage user accounts, suitable for CI/CD and deployment exercises.
-
-[CI Build](https://github.com/1DeliDolu/devops-capstone-project/actions/workflows/ci-build.yaml/badge.svg?branch=main)(https://github.com/1DeliDolu/devops-capstone-project/actions/workflows/ci-build.yaml)
-
-## Status
-
-The project is complete. All CD pipeline changes were applied in `tekton/pipeline.yaml` and deployment manifests are located under `deploy/`.
-
-Report: [Build an Automated CD DevOps Pipeline Using Tekton and OpenShift.pdf](Build%20an%20Automated%20CD%20DevOps%20Pipeline%20Using%20Tekton%20and%20OpenShift.pdf)
-
-If you want any other updates to the README, tell me and I'll apply them.
-
-## Quickstart
-
-Clone the repository:
-
-```
-git clone https://github.com/1DeliDolu/devops-capstone-project.git
-cd devops-capstone-project
-```
-
-Prerequisites:
-
-- Python 3.9+
-- pip
-- Docker (for building images)
-- OpenShift CLI (`oc`) if you plan to run the `deploy` task locally
-
-Run locally (development):
-
-```
-python -m venv .venv
-source .venv/bin/activate   # on Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-# Start with gunicorn (bind to 0.0.0.0:8080):
-gunicorn "service:app" -b 0.0.0.0:8080
-```
-
-Run tests:
-
-```
-pip install -r requirements.txt
-pytest -q
-```
-
-CI / CD notes:
-
-- Tekton pipeline configuration is in `tekton/pipeline.yaml` and uses ClusterTasks `buildah` and `openshift-client` to build and deploy the image.
-- Manifests for deployment are under the `deploy/` directory. The pipeline replaces `IMAGE_NAME_HERE` in `deploy/deployment.yaml` with the built image tag.
-
-If you want, I can commit and push these README changes for you.
-
-## Submission Evidence
-
-This repository includes the files and placeholders used for the final submission. Add the required screenshots and output files to the repository (or provide public URLs) and they will be referenced here.
-
-- README (this file): README.md (public URL: https://github.com/1DeliDolu/devops-capstone-project/blob/main/README.md)
-- CI workflow output: `ci-workflow-done` (terminal output file)
-- CI workflow config: `.github/workflows/ci-build.yaml` or `ci-build.yaml` in repo
-- Tekton pipeline config: `tekton/pipeline.yaml`
-- Deployment manifests: `deploy/deployment.yaml` and files under `deploy/`
-- Dockerfile: `Dockerfile` (root)
-- Kubernetes outputs: `kube-app-output`, `kube-images`, `kube-deploy-accounts` (if generated)
-- Tekton logs: `pipelinerun.txt` (save pipeline run logs here)
-
-# Account Service — DevOps Capstone
-
-A small RESTful microservice for managing customer accounts, designed for CI/CD and Kubernetes/OpenShift deployment exercises.
+A small Flask-based RESTful microservice providing CRUD operations for Account resources and a health endpoint.
 
 ## Overview
 
-A Flask-based microservice exposing CRUD endpoints for an `Account` resource, persisting data in PostgreSQL via SQLAlchemy. The repository includes unit tests, linting, a Dockerfile, Kubernetes/OpenShift manifests, and a Tekton pipeline for automated build & deploy.
+This repository implements an Account REST API built with Flask and SQLAlchemy. It includes unit tests, a Dockerfile for containerization, Kubernetes deployment manifests, and a Tekton pipeline for CI/CD.
+
+- Application entrypoint: the Flask app instance is exposed as `service:app` ([service/**init**.py](service/__init__.py)).
+- Persistence: SQLAlchemy with PostgreSQL (configurable via environment).
+- Tests: nose-based test suite in `tests/`.
 
 ## Features
 
-- CRUD API for `Account` (create, list, read, update, delete)
-- Health check and root metadata endpoints
-- SQLAlchemy models with serialize/deserialize and basic validation
-- Unit tests using `nose` and `factory-boy`
-- Linting/formatting with `flake8`, `pylint`, `black`
-- Docker image and Kubernetes/OpenShift manifests
-- Tekton pipeline for CI/CD in-cluster
+- CRUD for Account resources: create, list, read, update, delete.
+- Health endpoint (`/health`) and root index (`/`).
+- Database initialization CLI command: `flask db-create`.
+- Unit tests and test factories for reproducible test data.
+- Dockerfile for production container, Kubernetes manifests for deployment.
+- Tekton pipeline example for CI/CD.
 
 ## Tech Stack
 
-- Python 3.9
-- Flask, Flask‑SQLAlchemy
-- PostgreSQL
-- Gunicorn (WSGI)
-- honcho (Procfile runner)
-- Testing: `nose`, `factory-boy`
-- Linting/formatting: `flake8`, `pylint`, `black`
-- Container build: Docker / buildah (Tekton)
-- CI/CD: Tekton pipeline
+- Python 3.9 (Docker base image: `python:3.9-slim`)
+- Flask
+- Flask-SQLAlchemy / SQLAlchemy
+- PostgreSQL (psycopg2)
+- Gunicorn (WSGI server)
+- Testing: nose, factory_boy
+- Lint/format: flake8, pylint, black
+- Containerization: Docker
+- Orchestration / CI: Kubernetes manifests (`deploy/`) and Tekton pipeline (`tekton/`)
+- License: Apache-2.0 ([LICENSE](LICENSE))
 
 ## Repository Structure (key files)
 
-- [service/](service) — Flask app, models and routes
-  - [service/**init**.py](service/__init__.py)
-  - [service/routes.py](service/routes.py)
-  - [service/models.py](service/models.py)
-  - [service/config.py](service/config.py)
-  - [service/common/](service/common)
-- [requirements.txt](requirements.txt)
-- [Dockerfile](Dockerfile)
-- [Procfile](Procfile)
-- [Makefile](Makefile)
-- [deploy/](deploy) — Kubernetes/OpenShift manifests
-  - [deploy/deployment.yaml](deploy/deployment.yaml)
-  - [deploy/service.yaml](deploy/service.yaml)
-  - [deploy/ingress.yaml](deploy/ingress.yaml)
-- [tekton/pipeline.yaml](tekton/pipeline.yaml)
-- [k8s/postgresql-ephemeral.yaml](k8s/postgresql-ephemeral.yaml)
-- [tests/](tests) — unit tests and factories
-- [LICENSE](LICENSE)
+- [service/](service/)
+  - [service/**init**.py](service/__init__.py) — app factory and initialization
+  - [service/routes.py](service/routes.py) — HTTP endpoints (CRUD + health)
+  - [service/models.py](service/models.py) — SQLAlchemy models and persistence
+  - [service/config.py](service/config.py) — configuration via environment variables
+  - [service/common/cli_commands.py](service/common/cli_commands.py) — `flask` CLI helpers
+  - [service/common/error_handlers.py](service/common/error_handlers.py) — JSON error handlers
+- [tests/](tests/) — unit tests and factories
+  - [tests/test_routes.py](tests/test_routes.py)
+  - [tests/factories.py](tests/factories.py)
+- Dockerfile — container image
+- Procfile — Heroku/Procfile-compatible startup
+- requirements.txt — pinned Python dependencies
+- deploy/
+  - [deploy/deployment.yaml](deploy/deployment.yaml) — Deployment template (IMAGE_NAME_HERE)
+  - [deploy/service.yaml](deploy/service.yaml) — ClusterIP Service (port 8080)
+- tekton/
+  - [tekton/pipeline.yaml](tekton/pipeline.yaml) — Tekton pipeline (lint, tests, build, deploy)
+- LICENSE — Apache 2.0 license
 
-Representative tree:
+Small tree (top-level):
 
 ```
-service/
-	__init__.py
-	routes.py
-	models.py
-	config.py
-deploy/
-	deployment.yaml
-	service.yaml
-Dockerfile
-Makefile
-requirements.txt
-tekton/pipeline.yaml
-tests/
-	test_routes.py
-	test_models.py
-	factories.py
+.
+├─ service/
+│  ├─ __init__.py
+│  ├─ routes.py
+│  ├─ models.py
+│  └─ common/
+├─ tests/
+│  ├─ test_routes.py
+│  └─ factories.py
+├─ Dockerfile
+├─ Procfile
+├─ requirements.txt
+├─ deploy/
+└─ tekton/
 ```
 
 ## Prerequisites
 
-- Python 3.9+
+- Python 3.9 (recommended to match Docker base image)
+- PostgreSQL (for local development or tests using a real DB)
 - pip
-- Docker (optional — build/run images)
-- kubectl / oc / k3d (optional — local Kubernetes/OpenShift)
-- make (optional — `Makefile` targets)
+- Docker (if building/running container)
+- For Tekton pipeline: Tekton installed on a Kubernetes/OpenShift cluster (pipeline uses ClusterTasks like `buildah`, `openshift-client`)
 
 ## Quickstart
 
-Clone and start locally:
+1. Install dependencies:
 
 ```bash
-git clone https://github.com/1DeliDolu/devops-capstone-project.git
-cd devops-capstone-project
-python -m venv .venv
-. .venv/bin/activate        # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
-make run                    # starts app via honcho (reads Procfile)
-# or run gunicorn directly:
-gunicorn --bind 0.0.0.0:8080 --log-level=info service:app
 ```
 
-Start a local Postgres for development (optional):
+2. Set a PostgreSQL connection (either via `DATABASE_URI` or individual env vars). Example (local Postgres default values used by the app if not set):
 
 ```bash
-make db
+export DATABASE_URI='postgresql://postgres:postgres@localhost:5432/postgres'
+# or set individual parts (app will construct DATABASE_URI if not provided)
+export DATABASE_HOST=localhost
+export DATABASE_USER=postgres
+export DATABASE_PASSWORD=postgres
+export DATABASE_NAME=postgres
 ```
 
-Build Docker image:
+3. Run the app (development / production via gunicorn):
 
 ```bash
-make build
-# or
-docker build --rm --pull --tag accounts:1.0 .
+# using gunicorn (binds to 0.0.0.0:8080 per Dockerfile)
+gunicorn --bind=0.0.0.0:8080 service:app
+
+# or (when using Procfile runner like honcho/foreman):
+honcho start
+```
+
+4. Verify health:
+
+```bash
+curl -sS http://localhost:8080/health
+# -> {"status":"OK"}
 ```
 
 ## Local Development
 
-Install
+### Install
 
-```bash
-pip install -r requirements.txt
-# or
-make install
-```
+Use the Quickstart install step (`pip install -r requirements.txt`). Consider a virtualenv.
 
-Run
+### Run
 
-- Development via `honcho` (reads `Procfile`):
+- Gunicorn (production-like):
+  ```bash
+  gunicorn --bind=0.0.0.0:8080 service:app
+  ```
+- Flask CLI is available (module sets up `app` and registers CLI commands). To use Flask CLI:
+  ```bash
+  export FLASK_APP=service
+  flask --help
+  # Example: recreate DB tables (development only)
+  flask db-create
+  ```
 
-```bash
-make run
-# or
-honcho start
-```
+### Environment Variables / Configuration
 
-- Direct WSGI (Gunicorn):
+Configuration resides in [service/config.py](service/config.py). Primary variables:
 
-```bash
-gunicorn --bind 0.0.0.0:8080 --log-level=info service:app
-```
+- `DATABASE_URI` — full SQLAlchemy URI (e.g. `postgresql://user:pass@host:5432/dbname`). If unset, the app builds the URI from:
+  - `DATABASE_USER` (default `postgres`)
+  - `DATABASE_PASSWORD` (default `postgres`)
+  - `DATABASE_NAME` (default `postgres`)
+  - `DATABASE_HOST` (default `localhost`)
+- `SECRET_KEY` — Flask secret (default `s3cr3t-key-shhhh`)
 
-Environment variables / configuration
-
-Configuration is read from environment variables in [service/config.py](service/config.py):
-
-- `DATABASE_URI` — full SQLAlchemy URL (overrides others)
-- If `DATABASE_URI` is unset, the app builds a URI using:
-  - `DATABASE_USER` (default: `postgres`)
-  - `DATABASE_PASSWORD` (default: `postgres`)
-  - `DATABASE_NAME` (default: `postgres`)
-  - `DATABASE_HOST` (default: `localhost`)
-  - default DB port: `5432`
-- `SECRET_KEY` — default `s3cr3t-key-shhhh`
-- `PORT` — used by `Procfile` / honcho
-
-Notes:
-
-- `Dockerfile` exposes port `8080` and runs `gunicorn` binding to `0.0.0.0:8080`.
+Set these in your shell or via your container/orchestration secrets.
 
 ## Testing
 
-Run unit tests (repository uses `nose`):
+Run unit tests with nose as used in the repo:
 
 ```bash
-nosetests -vv --with-spec --spec-color
-# or via Makefile:
-make tests
+nosetests -v --with-spec --spec-color
 ```
 
-Tests expect a reachable PostgreSQL instance. Default test DB URI (used if `DATABASE_URI` unset):
+Coverage (example):
 
-`postgresql://postgres:postgres@localhost:5432/postgres`
+```bash
+coverage run -m nose && coverage report -m
+```
 
-See [tests/test_routes.py](tests/test_routes.py) and [tests/test_models.py](tests/test_models.py).
+Notes:
+
+- Tests rely on a configured `DATABASE_URI` (see `tests/test_routes.py` for how `DATABASE_URI` is read). By default tests will use `postgresql://postgres:postgres@localhost:5432/postgres` if `DATABASE_URI` is not set.
 
 ## Linting / Formatting
 
-Run linting via Makefile:
+- Flake8:
 
 ```bash
-make lint
+flake8 .
 ```
 
-`requirements.txt` includes `flake8`, `pylint`, and `black`.
+- Black (format):
+
+```bash
+black .
+```
+
+- Pylint:
+
+```bash
+pylint service
+```
+
+The Tekton pipeline includes a lint task configured to run flake8 with specific args (`--max-complexity=10`, `--max-line-length=127`).
 
 ## Docker
 
-- `Dockerfile` uses `python:3.9-slim`, installs dependencies from [requirements.txt](requirements.txt), copies `service/`, and runs `gunicorn service:app`.
-- Container exposes port `8080`.
-
-Run locally:
+Build and run the image using the provided `Dockerfile` (exposes port 8080):
 
 ```bash
-docker build -t accounts:1.0 .
-docker run -p 8080:8080 accounts:1.0
+docker build -t accounts:latest .
+docker run -e DATABASE_URI='postgresql://postgres:postgres@db:5432/postgres' -p 8080:8080 accounts:latest
 ```
+
+The container command is `gunicorn --bind=0.0.0.0:8080 service:app` (see `Dockerfile`).
 
 ## Kubernetes / OpenShift
 
-Manifests are in [deploy/](deploy):
+Manifests are in `deploy/`:
 
-- [deploy/deployment.yaml](deploy/deployment.yaml) — template with placeholder `IMAGE_NAME_HERE`
-- [deploy/service.yaml](deploy/service.yaml)
-- [deploy/ingress.yaml](deploy/ingress.yaml)
+- [deploy/deployment.yaml](deploy/deployment.yaml) — deployment template referencing `IMAGE_NAME_HERE` and using env vars/Secrets for DB credentials.
+- [deploy/service.yaml](deploy/service.yaml) — ClusterIP service exposing port 8080.
 
-Local ephemeral Postgres manifest: [k8s/postgresql-ephemeral.yaml](k8s/postgresql-ephemeral.yaml) (contains a `Secret` with demo credentials for local testing only).
+The deployment expects a Kubernetes Secret (name `postgresql`) with keys:
 
-Makefile helpers:
+- `database-name`
+- `database-password`
+- `database-user`
 
-- `make cluster` — create a k3d cluster (requires k3d)
-- `make tekton` — install Tekton into cluster
-- `make clustertasks` — create Tekton ClusterTasks
+Tekton pipeline (`tekton/pipeline.yaml`) contains a `deploy` task that replaces `IMAGE_NAME_HERE` with the built image and applies the manifests.
 
 ## CI/CD
 
-Tekton pipeline: [tekton/pipeline.yaml](tekton/pipeline.yaml). Pipeline steps:
+A Tekton pipeline example is provided at [tekton/pipeline.yaml](tekton/pipeline.yaml). It defines tasks for:
 
-- clone repo (`git-clone`)
-- lint (`flake8`)
-- run tests (`nose`)
-- build image (`buildah` ClusterTask)
-- deploy (`openshift-client` ClusterTask) — pipeline replaces `IMAGE_NAME_HERE` in `deploy/deployment.yaml` with the built image
+- clone
+- lint (flake8)
+- tests (nose)
+- build (buildah)
+- deploy (openshift-client)
 
-The pipeline requires ClusterTasks such as `git-clone`, `flake8`, `nose`, `buildah`, and `openshift-client` to be available in the cluster.
+Notes:
 
-## API Documentation
+- The pipeline references ClusterTasks such as `git-clone`, `flake8`, `nose`, `buildah`, and `openshift-client`. Ensure these tasks are available in your Tekton cluster.
 
-Endpoints implemented in [service/routes.py](service/routes.py):
+## API Documentation (endpoints)
 
-- `GET /` — service metadata
-- `GET /health` — health check
-- `POST /accounts` — create account
-- `GET /accounts` — list accounts
-- `GET /accounts/<id>` — retrieve account
-- `PUT /accounts/<id>` — update account
-- `DELETE /accounts/<id>` — delete account
+Primary endpoints (defined in [service/routes.py](service/routes.py)):
 
-Example `curl` calls:
+- GET /health — health check
+- GET / — index (service name/version)
+- POST /accounts — create an Account (JSON)
+- GET /accounts — list Accounts
+- GET /accounts/<id> — get Account by id
+- PUT /accounts/<id> — update Account
+- DELETE /accounts/<id> — delete Account
 
-Create an account:
-
-```bash
-curl -sS -X POST http://localhost:8080/accounts \
-	-H "Content-Type: application/json" \
-	-d '{"name":"Alice","email":"alice@example.com","address":"123 Main St","phone_number":"555-0100","date_joined":"2020-01-01"}'
-```
-
-List accounts:
+Example curl calls:
 
 ```bash
-curl -sS http://localhost:8080/accounts
+# Health
+curl -i http://localhost:8080/health
+
+# Create an account
+curl -i -X POST http://localhost:8080/accounts \
+	-H 'Content-Type: application/json' \
+	-d '{"name":"Alice","email":"alice@example.com","address":"123 Main St"}'
+
+# List accounts
+curl -i http://localhost:8080/accounts
 ```
 
-Get account:
+Payload fields (see [service/models.py](service/models.py)):
 
-```bash
-curl -sS http://localhost:8080/accounts/1
-```
-
-Update account:
-
-```bash
-curl -sS -X PUT http://localhost:8080/accounts/1 \
-	-H "Content-Type: application/json" \
-	-d '{"name":"Alice Updated","email":"alice@new.example","address":"123 Main St"}'
-```
-
-Delete account:
-
-```bash
-curl -sS -X DELETE http://localhost:8080/accounts/1
-```
+- `name` (string, required)
+- `email` (string, required)
+- `address` (string, required)
+- `phone_number` (string, optional)
+- `date_joined` (ISO date, optional — defaults to today)
 
 ## Troubleshooting
 
-- DB connection errors:
-  - Verify `DATABASE_URI` or `DATABASE_HOST` / `DATABASE_USER` / `DATABASE_PASSWORD` are correct.
-  - For local testing, start a PostgreSQL container via `make db`.
-- Port conflicts:
-  - App defaults to bind on port `8080` (containerized) or `PORT` env var when using `honcho`/Procfile.
-- Tests failing due to DB:
-  - Confirm test DB is reachable at `postgresql://postgres:postgres@localhost:5432/postgres` or set `DATABASE_URI` for test runs.
-- Secrets in manifests:
-  - Do not use demo secrets from [k8s/postgresql-ephemeral.yaml](k8s/postgresql-ephemeral.yaml) in production.
+- Database connection errors: verify `DATABASE_URI` or individual DB env vars and that PostgreSQL is reachable on port 5432.
+- Missing migration system: this project uses `db.create_all()` (no Alembic migrations included). Use `flask db-create` for dev to recreate tables.
+- Tests fail locally: ensure `DATABASE_URI` in your environment points to a test Postgres instance and that the database is accessible.
+- Tekton deploy fails: ensure referenced ClusterTasks exist and `oc`/`kubectl` credentials are configured in the pipeline environment.
 
 ## Contributing
 
-- No `CONTRIBUTING.md` present. Suggested workflow:
-  - Fork → feature branch → PR.
-  - Run `make lint` and `make tests` locally before submitting a PR.
-  - Validate pipeline/manifest changes in a safe test cluster.
+- No `CONTRIBUTING.md` found; follow standard fork-and-PR workflow.
+- The repository is licensed under Apache License 2.0 (see [LICENSE](LICENSE)).
 
 ## Security
 
-- The repo contains demo default credentials and a local `Secret` manifest for convenience. Do not use these values in production.
-- Use secure secret management for DB credentials in production; [deploy/deployment.yaml](deploy/deployment.yaml) expects secrets.
+- Secrets are expected to be provided via environment variables or Kubernetes Secrets (see `deploy/deployment.yaml` which references `postgresql` secret).
+- Do not commit production credentials to the repository.
 
 ## License
 
-See [LICENSE](LICENSE).
+Apache License, Version 2.0 — see [LICENSE](LICENSE).
 
 ## Assumptions / TODO
 
-- No GitHub Actions workflows found under `.github/workflows/` in this repository; README does not include CI badges. (Checked repository root and `tekton/`.)
-- `deploy/deployment.yaml` contains placeholder `IMAGE_NAME_HERE`; image registry and tagging strategy are not defined. Tekton pipeline replaces this with the provided `build-image` parameter. (Checked [deploy/deployment.yaml](deploy/deployment.yaml) and [tekton/pipeline.yaml](tekton/pipeline.yaml).)
-- No `CONTRIBUTING.md` or `CODEOWNERS` — maintainers and PR process are unspecified. (Checked repository root.)
-- Ingress host/TLS is not configured in [deploy/ingress.yaml](deploy/ingress.yaml). (Checked file.)
-- No `docker-compose.yml` present. (Checked repository root.)
-- Tests require a running Postgres instance; only local helpers are `make db` and [k8s/postgresql-ephemeral.yaml](k8s/postgresql-ephemeral.yaml). (Checked [Makefile](Makefile), [k8s/postgresql-ephemeral.yaml](k8s/postgresql-ephemeral.yaml), and tests.)
-- If you want, I can:
-  - Add a `CONTRIBUTING.md`.
-  - Provide example image tag substitutions in `deploy/deployment.yaml` and commit them.
-  - Add a GitHub Actions workflow for quick CI (requires confirmation).
-
->>>>>>> 0ae7321 (Update README.md)
->>>>>>>
->>>>>>
->>>>>
->>>>
->>>
->>
+- No `.env.example` or example secrets file present — consider adding one for local development.
+- Tekton pipeline references ClusterTasks (`git-clone`, `flake8`, `nose`, `buildah`, `openshift-client`) which are not included in this repo — ensure they exist in your Tekton environment or provide custom tasks.
+- `deploy/deployment.yaml` contains placeholder `IMAGE_NAME_HERE`; CI/CD (or manual step) must replace it with your built image.
+- The repository `README.md` was empty/whitespace initially; this document was generated by inspecting the code and manifests in the repository.
